@@ -1,0 +1,133 @@
+Functions
+Syntax:
+<returnType> <functionName>(args);
+Pass by value:
+void print(int n, float f, string s);
+
+Pass by reference:
+void print(int & n, float & f, string & s);
+
+Different return types:
+
+int add(int n, int m); // returns int
+
+float calculatePay(float rate, float hours); // returns float
+
+int * add(int n, int m); // returns pointer to an int
+
+Person * newPerson(string name); // returns pointer to a person object
+
+Car * newCar() { // returns pointer to a car object
+	Car * carPtr = new Car;
+	return carPtr;
+}
+
+std::strings and File I/O
+
+To access/manipulate a character in a std::string one at a time, simply index into each character:
+
+for(int i=0; i < myString.length(); i++) {
+		cout << myString[i];
+	}
+To concatenate strings:
+	newString = “Hello” + “ ” + “World!”;
+	
+The insertion operator >> reads ONE string at a time
+
+		string myString;
+		ifstream myFile;
+		myFile.open(“input.txt”);
+		while(myFile >> myString) {
+			cout << myString << endl;
+		}
+
+The getline method reads ONE line at a time
+
+		string myLine;
+		ifstream myFile;
+		myFile.open(“input.txt”);
+		while(getline(myFile, myLine)) {
+			cout << myLine << endl;
+			}	
+			
+User input
+The insertion operator >> reads ONE string at a time
+			string myString;
+					cout << “Please enter one word: ”;
+					cin >> myString;
+					cout << myString << endl;
+The getline method reads ONE line at a time
+			string myLine;
+					cout << “Please enter one word: ”;
+					getline(cin, myLine);
+					cout << myLine << endl;
+	
+Local Arrays Declared with following syntax:
+	
+	<type> <arrayName>[<size>];
+	int    intArray[5];
+	double doubleArray[5];
+	float  floatArray[5];
+	Person personArray[5];
+
+To access each array element and perform some operation, we can use a for loop to iterate over the array. For example, this function searches for an int element in the array and returns its index:
+
+	int search(int arr[], int size, int num) {
+		for(int i=0; i < size; i++) {
+			if(arr[i] == num) {
+				return i;
+			}
+		}
+	}
+
+
+
+if(arr[i].getNum() == num) // getNum() is a public member function of the class Person
+
+
+Dynamic Arrays
+The main difference in dynamic arrays is the declaration and extra necessary step to clean up after. The rest of the syntax is exactly the same (e.g. setting/retrieving elements).
+
+int * arr = new int[5]; // makes dynamic array of size 5 and the pointer arr points to it
+
+IMPORTANT: After the array is no longer needed, it must be returned back to the heap:
+
+delete [] arr;
+
+
+Default constructor
+Local object
+Person myPerson; // instantiates empty object (stack memory) Dynamic object
+
+Person * personPtr = new Person; // instantiates dynamic empty object (heap memory)
+
+Parameterized constructor Local object
+
+Person myPerson(string firstName, string lastName, int age); // instantiates object with 3 fields set (stack memory)
+Dynamic object
+
+Person * personPtr = new Person(string firstName, string lastName, int age); // instantiates dynamic object with 3 fields 
+set (heap memory)
+
+
+
+int * intPtr = nullptr; // This is a pointer of type int. It does not point to anything yet, so we can set it to nullptr
+
+intPtr = new int; // The call to new requires a data type. The type must match the type of your pointer variable. 
+
+*intPtr = 15;
+
+Person * personPtr = new Person(“Maria”, “Kenn”); // personPtr is a pointer of type Person. It now points to a new dynamic Person object.
+
+(*personPtr).getFirstName();
+personPtr->getFirstName();
+
+
+I can now apply that knowledge and call any public member function of the dynamic object:
+
+personPtr->setAge(35);
+
+delete intPtr; // delete the memory that contained the value 80
+intPtr = nullptr;
+
+
